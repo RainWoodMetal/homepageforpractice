@@ -1,7 +1,7 @@
 <template>
   <span class="info">
-      {{text}}
       <slot></slot>
+      {{text}}
   </span>
 </template>
 

@@ -10,26 +10,31 @@
         </div>
       </div>
     </div>
-    <div class="info-box clearBoth">
+    <!-- <div class="info-box clearBoth">
       <div class="left-box">
         <catogory :text="catogory"></catogory>
       </div>
       <div class="right-box">
         <other-info :text="otherInfo"></other-info>
       </div>
-    </div>
+    </div> -->
+    <info-box class="info-box" :infoText="otherInfo">
+      <catogory :text="catogory"></catogory>
+    </info-box>
   </div>
 </template>
 
 <script>
 import Catogory from '../Catogory'
-import otherInfo from '../Other-Info'
+// import otherInfo from '../Other-Info'
+import InfoBox from './Info-Box'
 
 export default {
   name: 'mouldLayout1',
   components:{
     Catogory,
-    otherInfo
+    // otherInfo,
+    InfoBox
   },
   props:{
     item: Object,
@@ -78,12 +83,12 @@ export default {
 .info-box{
   margin-top: 8px;
 }
-.info-box .left-box{
+/* .info-box .left-box{
   float: left;
 }
 .info-box .right-box{
   float: right;
-}
+} */
 .clearBoth::after, .clearBoth::before{
     content: "";
     display: table;

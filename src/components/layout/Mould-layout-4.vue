@@ -8,26 +8,25 @@
         <h2 :class="{title:!isSub, 'sub-title': isSub}">{{title}}</h2>
       </div>
     </div>
-    <div class="info-box clearBoth">
-      <div class="left-box">
-        <catogory :text="catogory"></catogory>
-      </div>
-      <div class="right-box">
-        <other-info class="otherInfo" :text="otherInfo">{{numMeaning}}</other-info>
-      </div>
-    </div>
+
+    <info-box class="info-box" :infoText="otherInfo">
+      <catogory :text="catogory"></catogory>
+      <template v-slot:InfoIcon>
+        <div class="info-icon"></div>
+      </template>
+    </info-box>
   </div>
 </template>
 
 <script>
 import Catogory from '../Catogory'
-import otherInfo from '../Other-Info'
+import InfoBox from './Info-Box'
 
 export default {
   name: 'mouldLayout4',
   components:{
     Catogory,
-    otherInfo,
+    InfoBox
   },
   props:{
     item: Object,
@@ -47,8 +46,10 @@ export default {
       return this.item.sCatogoryName;
     },
     otherInfo(){
-      return this.item.scanTimes + "";
+      return this.item.scanTimes+ " " + this.numMeaning();
     },
+  },
+  methods:{
     numMeaning(){
       var result = "";
       if(this.isSub){
@@ -96,15 +97,17 @@ export default {
   margin-bottom: 8px;
   overflow: hidden;
 }
-.otherInfo{
+.info-icon{
     font-size: .6rem;
     color: #9c9c9c;
     line-height: 1;
     background-image: url('https://mobile.licai.com/licai/static/img/c684d3b.png') ;
     background-repeat: no-repeat;
     background-size: .5rem .5rem;
-    padding: 0 0 0 .7rem;
     background-position: 0 50%;
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
 }
 
 .img-box{

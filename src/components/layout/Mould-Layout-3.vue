@@ -5,26 +5,22 @@
         <img :src="item.pic" alt="">
       </div>
     </div>
-    <div class="info-box clearBoth">
-      <div class="left-box">
-        <h2 class="title">{{title}}</h2>
-      </div>
-      <div class="right-box">
-        <other-info :text="otherInfo"></other-info>
-      </div>
-    </div>
+    <info-box class="info-box" :infoText="otherInfo">
+      <h2 class="title">{{title}}</h2>
+    </info-box>
   </div>
 </template>
 
 <script>
 // import Catogory from '../Catogory'
-import otherInfo from '../Other-Info'
+// import otherInfo from '../Other-Info'
+import InfoBox from './Info-Box'
 
 export default {
   name: 'mouldLayout3',
   components:{
     // Catogory,
-    otherInfo
+    InfoBox
   },
   props:{
     item: Object,
